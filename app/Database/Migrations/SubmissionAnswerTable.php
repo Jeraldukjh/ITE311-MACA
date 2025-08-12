@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateQuizAnswersTable extends Migration
+class CreateSubmissionAnswersTable extends Migration
 {
     public function up()
     {
@@ -15,6 +15,11 @@ class CreateQuizAnswersTable extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
+            'submission_id' => [
+                'type'       => 'INT',
+                'constraint' => 11,
+                'unsigned'   => true,
+            ],
             'question_id' => [
                 'type'       => 'INT',
                 'constraint' => 11,
@@ -22,11 +27,17 @@ class CreateQuizAnswersTable extends Migration
             ],
             'answer_text' => [
                 'type' => 'TEXT',
-                'null' => false,
+                'null' => true,
             ],
             'is_correct' => [
                 'type'       => 'BOOLEAN',
-                'default'    => false,
+                'null'       => true,
+                'default'    => null,
+            ],
+            'points_earned' => [
+                'type'       => 'DECIMAL',
+                'constraint' => '5,2',
+                'null'       => true,
             ],
             'created_at' => [
                 'type' => 'DATETIME',
@@ -39,12 +50,13 @@ class CreateQuizAnswersTable extends Migration
         ]);
         
         $this->forge->addKey('id', true);
+        $this->forge->addForeignKey('submission_id', 'submissions', 'id', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('question_id', 'quiz_questions', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->createTable('quiz_answers');
+        $this->forge->createTable('submission_answers');
     }
 
     public function down()
     {
-        $this->forge->dropTable('quiz_answers');
+        $this->forge->dropTable('submission_answers');
     }
 }

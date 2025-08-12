@@ -4,47 +4,55 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateCoursesTable extends Migration
+class CreateUsersTable extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id' => [
+            'id'          => [
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'title' => [
+            'email'       => [
+                'type'       => 'VARCHAR',
+                'constraint' => 100,
+                'unique'     => true,
+            ],
+            'password'    => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'description' => [
-                'type' => 'TEXT',
-                'null' => true,
+            'first_name'  => [
+                'type'       => 'VARCHAR',
+                'constraint' => 50,
             ],
-            'instructor_id' => [
-                'type'       => 'INT',
-                'constraint' => 11,
-                'unsigned'   => true,
+            'last_name'   => [
+                'type'       => 'VARCHAR',
+                'constraint' => 50,
             ],
-            'created_at' => [
+            'role'        => [
+                'type'       => 'ENUM',
+                'constraint' => ['student', 'instructor', 'admin'],
+                'default'    => 'student',
+            ],
+            'created_at'  => [
                 'type' => 'DATETIME',
                 'null' => true,
             ],
-            'updated_at' => [
+            'updated_at'  => [
                 'type' => 'DATETIME',
                 'null' => true,
             ],
         ]);
-        
+
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('instructor_id', 'users', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->createTable('courses');
+        $this->forge->createTable('users', true); // true = if not exists
     }
 
     public function down()
     {
-        $this->forge->dropTable('courses');
+        $this->forge->dropTable('users', true); // true = if exists
     }
 }
