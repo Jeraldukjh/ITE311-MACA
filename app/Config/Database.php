@@ -28,6 +28,7 @@ class Database extends Config
         'DSN'          => '',
         'hostname'     => 'localhost',
 <<<<<<< HEAD
+<<<<<<< HEAD
         'username'     => 'root',
         'password'     => '',
         'database'     => 'lms_maca',
@@ -36,6 +37,11 @@ class Database extends Config
         'password'     => '',
         'database'     => '',
 >>>>>>> 42992b987da76b5473d6bd46d5a2fdd26e67c766
+=======
+        'username'     => 'root',        // default MySQL user sa XAMPP
+        'password'     => '',            // default walang password
+        'database'     => 'lms_maca',    // pangalan ng database mo
+>>>>>>> 685d358 (Initial commit)
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,
@@ -56,7 +62,11 @@ class Database extends Config
             'time'     => 'H:i:s',
         ],
     ];
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 685d358 (Initial commit)
     //    /**
     //     * Sample database connection for SQLite3.
     //     *

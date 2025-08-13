@@ -3,12 +3,16 @@
 namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
+<<<<<<< HEAD
 use CodeIgniter\I18n\Time;
+=======
+>>>>>>> 685d358 (Initial commit)
 
 class UserSeeder extends Seeder
 {
     public function run()
     {
+<<<<<<< HEAD
         $users = [
             // Admin user
             [
@@ -72,5 +76,36 @@ class UserSeeder extends Seeder
         $this->db->table('users')->insertBatch($users);
         
         echo "Successfully seeded users table.\n";
+=======
+        $data = [
+            [
+                'name'     => 'Admin User',
+                'email'    => 'admin@example.com',
+                'password' => password_hash('admin123', PASSWORD_DEFAULT),
+                'role'     => 'admin'
+            ],
+            [
+                'name'     => 'Instructor One',
+                'email'    => 'instructor1@example.com',
+                'password' => password_hash('instructor123', PASSWORD_DEFAULT),
+                'role'     => 'instructor'
+            ],
+            [
+                'name'     => 'Student One',
+                'email'    => 'student1@example.com',
+                'password' => password_hash('student123', PASSWORD_DEFAULT),
+                'role'     => 'student'
+            ],
+            [
+                'name'     => 'Student Two',
+                'email'    => 'student2@example.com',
+                'password' => password_hash('student123', PASSWORD_DEFAULT),
+                'role'     => 'student'
+            ],
+        ];
+
+        // Insert all data in one go
+        $this->db->table('users')->insertBatch($data);
+>>>>>>> 685d358 (Initial commit)
     }
 }

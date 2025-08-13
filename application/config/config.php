@@ -25,6 +25,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $config['base_url'] = '';
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 685d358 (Initial commit)
 /*
 |--------------------------------------------------------------------------
 | Index File

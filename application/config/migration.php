@@ -11,7 +11,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | and disable it back when you're done.
 |
 */
+<<<<<<< HEAD
 $config['migration_enabled'] = FALSE;
+=======
+$config['migration_enabled'] = TRUE;
+>>>>>>> 685d358 (Initial commit)
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +33,11 @@ $config['migration_enabled'] = FALSE;
 |       defaults to 'sequential' for backward compatibility with CI2.
 |
 */
+<<<<<<< HEAD
 $config['migration_type'] = 'timestamp';
+=======
+$config['migration_type'] = 'sequential';
+>>>>>>> 685d358 (Initial commit)
 
 /*
 |--------------------------------------------------------------------------
