@@ -14,12 +14,13 @@ $userRole = session()->get('role') ?? 'guest';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #0d6efd;
-            --secondary-color: #6c757d;
-            --success-color: #198754;
-            --danger-color: #dc3545;
+            --primary-color:rgb(45, 75, 93);  /* Red theme primary color */
+            --secondary-color:rgb(91, 51, 46);  /* Darker red for secondary elements */
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --info-color: #3498db;
             --light-color: #f8f9fa;
-            --dark-color: #212529;
+            --dark-color:rgb(62, 34, 30);  /* Changed to match primary red */
         }
         
         body {
@@ -27,9 +28,100 @@ $userRole = session()->get('role') ?? 'guest';
             background-color: #f5f5f5;
         }
         
+        /* Sidebar Styles */
+        #wrapper {
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+        }
+        
+        #sidebar-wrapper {
+            min-height: 100vh;
+            width: 250px;
+            margin-left: -250px;
+            transition: margin 0.25s ease-out;
+            position: relative;
+            z-index: 1000;
+            background-color: var(--primary-color) !important;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        
+        #page-content-wrapper {
+            width: 100%;
+            min-width: 0;
+            flex: 1;
+        }
+        
+        #wrapper.toggled #sidebar-wrapper {
+            margin-left: 0;
+        }
+        
+        .sidebar-heading {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        
+        .list-group-item {
+            border: none;
+            border-radius: 0;
+            padding: 0.75rem 1.5rem;
+        }
+        
+        .list-group-item:hover, .list-group-item:focus {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        .list-group-item.active {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        @media (min-width: 992px) {
+            #sidebar-wrapper {
+                margin-left: 0;
+            }
+            
+            #wrapper.toggled #sidebar-wrapper {
+                margin-left: -250px;
+            }
+            
+            #page-content-wrapper {
+                min-width: 0;
+                width: 100%;
+            }
+        }
+        
+        /* Navbar styles for mobile */
         .navbar {
             background-color: var(--primary-color) !important;
             box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+        
+        .btn-primary, .btn-primary:hover, .btn-primary:focus {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .bg-primary {
+            background-color: var(--primary-color) !important;
+        }
+        
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+        
+        .border-primary {
+            border-color: var(--primary-color) !important;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: white;
         }
         
         .navbar-brand, .nav-link {
@@ -64,194 +156,155 @@ $userRole = session()->get('role') ?? 'guest';
         .welcome-text {
             color: #6c757d;
             font-size: 1.1rem;
-        }
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark mb-4">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="<?= base_url() ?>">
-                <i class="fas fa-graduation-cap me-2"></i>LMS System
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <?php if ($isLoggedIn): ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url('dashboard') ?>">
-                                <i class="fas fa-tachometer-alt me-1"></i> Dashboard
+    <!-- Sidebar Navigation -->
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-danger text-white" id="sidebar-wrapper">
+            <div class="sidebar-heading p-3 d-flex justify-content-between align-items-center">
+                    <span class="fw-bold">LMS MACA</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="list-group list-group-flush">
+                <?php if ($isLoggedIn): ?>
+                    <a href="<?= base_url('dashboard') ?>" class="list-group-item list-group-item-action text-white" style="background-color: var(--primary-color); border-color: rgba(255,255,255,0.1);">
+                        Dashboard
+                    </a>
+                    
+                    <?php if ($userRole === 'admin'): ?>
+                        <!-- Admin Menu Items -->
+                        <a class="list-group-item list-group-item-action bg-dark text-white" data-bs-toggle="collapse" href="#adminMenu" role="button" aria-expanded="false" aria-controls="adminMenu">
+                            Admin
+                        </a>
+                        <div class="collapse" id="adminMenu">
+                            <a href="<?= base_url('admin/users') ?>" class="list-group-item list-group-item-action text-white ps-5" style="background-color: var(--primary-color); border-color: rgba(255,255,255,0.1);">
+                                Manage Users
                             </a>
-                        </li>
+                            <a href="<?= base_url('admin/courses') ?>" class="list-group-item list-group-item-action text-white ps-5" style="background-color: var(--primary-color); border-color: rgba(255,255,255,0.1);">
+                                Manage Courses
+                            </a>
+                            <a href="<?= base_url('admin/settings') ?>" class="list-group-item list-group-item-action text-white ps-5" style="background-color: var(--primary-color); border-color: rgba(255,255,255,0.1);">
+                            </a>
+                        </div>
                         
-                        <?php if ($userRole === 'admin'): ?>
-                            <!-- Admin Menu Items -->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" 
-                                   data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-user-shield me-1"></i> Admin
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="adminDropdown">
-                                    <li><a class="dropdown-item" href="<?= base_url('admin/users') ?>"><i class="fas fa-users me-2"></i>Manage Users</a></li>
-                                    <li><a class="dropdown-item" href="<?= base_url('admin/courses') ?>"><i class="fas fa-book me-2"></i>Manage Courses</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="<?= base_url('admin/settings') ?>"><i class="fas fa-cog me-2"></i>Settings</a></li>
-                                </ul>
-                            </li>
-                            
-                        <?php elseif ($userRole === 'teacher'): ?>
-                            <!-- Teacher Menu Items -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?= base_url('teacher/courses') ?>">
-                                    <i class="fas fa-chalkboard-teacher me-1"></i> My Courses
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?= base_url('teacher/students') ?>">
-                                    <i class="fas fa-user-graduate me-1"></i> Students
-                                </a>
-                            </li>
-                            
-                        <?php elseif ($userRole === 'student'): ?>
-                            <!-- Student Menu Items -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?= base_url('student/courses') ?>">
-                                    <i class="fas fa-book-open me-1"></i> My Learning
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?= base_url('student/progress') ?>">
-                                    <i class="fas fa-chart-line me-1"></i> My Progress
-                                </a>
-                            </li>
-                        <?php endif; ?>
+                    <?php elseif ($userRole === 'teacher'): ?>
+                        <!-- Teacher Menu Items -->
+                        <a href="<?= base_url('teacher/courses') ?>" class="list-group-item list-group-item-action text-white" style="background-color: var(--danger-color); border-color: rgba(255,255,255,0.1);">
+                            My Courses
+                        </a>
+                        <a href="<?= base_url('teacher/students') ?>" class="list-group-item list-group-item-action text-white" style="background-color: var(--danger-color); border-color: rgba(255,255,255,0.1);">
+                            Students
+                        </a>
                         
-                    <?php else: ?>
-                        <!-- Guest Menu Items -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url('about') ?>">
-                                <i class="fas fa-info-circle me-1"></i> About
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url('courses') ?>">
-                                <i class="fas fa-book me-1"></i> Courses
-                            </a>
-                        </li>
+                    <?php elseif ($userRole === 'student'): ?>
+                        <!-- Student Menu Items -->
+                        <a href="<?= base_url('student/courses') ?>" class="list-group-item list-group-item-action text-white" style="background-color: var(--danger-color); border-color: rgba(255,255,255,0.1);">
+                            My Learning
+                        </a>
+                        <a href="<?= base_url('student/progress') ?>" class="list-group-item list-group-item-action text-white" style="background-color: var(--danger-color); border-color: rgba(255,255,255,0.1);">
+                            My Progress
+                        </a>
                     <?php endif; ?>
-                </ul>
-                
-                <ul class="navbar-nav">
-                    <?php if ($isLoggedIn): ?>
-                        <!-- User Dropdown -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" 
-                               role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="me-2"><?= esc(session()->get('name')) ?></span>
-                                <i class="fas fa-user-circle" style="font-size: 1.5rem;"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                                <li><a class="dropdown-item" href="<?= base_url('profile') ?>"><i class="fas fa-user me-2"></i>Profile</a></li>
-                                <li><a class="dropdown-item" href="<?= base_url('settings') ?>"><i class="fas fa-cog me-2"></i>Settings</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item text-danger" href="<?= base_url('logout') ?>"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
-                            </ul>
-                        </li>
-                    <?php else: ?>
-                        <!-- Login/Register Buttons -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url('login') ?>">
-                                <i class="fas fa-sign-in-alt me-1"></i> Login
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url('register') ?>">
-                                <i class="fas fa-user-plus me-1"></i> Register
-                            </a>
-                        </li>
-                    <?php endif; ?>
-                </ul>
+                    
+                <?php else: ?>
+                    <!-- Guest Menu Items -->
+                    <a href="<?= base_url('about') ?>" class="list-group-item list-group-item-action text-white" style="background-color: var(--danger-color); border-color: rgba(255,255,255,0.1);">
+                    </a>
+                    <a href="<?= base_url('courses') ?>" class="list-group-item list-group-item-action text-white" style="background-color: var(--primary-color); border-color: rgba(255,255,255,0.1);">
+                        Courses
+                    </a>
+                <?php endif; ?>
             </div>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="container mb-5">
-        <?php if (session()->getFlashdata('success')): ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <?= session()->getFlashdata('success') ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        <?php endif; ?>
-        
-        <?php if (session()->getFlashdata('error')): ?>
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <?= session()->getFlashdata('error') ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        <?php endif; ?>
-        
-        <?= $this->renderSection('content') ?>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-white py-4 mt-auto">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h5>LMS System</h5>
-                    <p class="mb-0">A modern learning management system for educational institutions.</p>
-                </div>
-                <div class="col-md-3">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="<?= base_url('about') ?>" class="text-white">About Us</a></li>
-                        <li><a href="<?= base_url('contact') ?>" class="text-white">Contact</a></li>
-                        <li><a href="<?= base_url('privacy') ?>" class="text-white">Privacy Policy</a></li>
-                        <li><a href="<?= base_url('terms') ?>" class="text-white">Terms of Service</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <h5>Connect With Us</h5>
-                    <div class="d-flex">
-                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+            
+            <?php if ($isLoggedIn): ?>
+                <!-- User Profile Section -->
+                <div class="position-absolute bottom-0 w-100 p-3" style="background-color: var(--primary-color);">
+                    <div class="dropdown">
+                        <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" href="#" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="me-2 d-flex align-items-center justify-content-center rounded-circle bg-secondary" style="width: 40px; height: 40px;">
+                                <span>U</span>
+                            </div>
+                            <div class="small">
+                                <div class="fw-bold"><?= esc(session()->get('name')) ?></div>
+                                <div class="text-muted"><?= ucfirst($userRole) ?></div>
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="<?= base_url('profile') ?>">Profile</a></li>
+                            <li><a class="dropdown-item" href="<?= base_url('settings') ?>">Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="<?= base_url('logout') ?>">Logout</a></li>
+                        </ul>
                     </div>
                 </div>
-            </div>
-            <hr class="mt-4 mb-3">
-            <div class="text-center">
-                <p class="mb-0">&copy; <?= date('Y') ?> LMS System. All rights reserved.</p>
-            </div>
+            <?php else: ?>
+                <!-- Login/Register Buttons -->
+                <div class="position-absolute bottom-0 w-100 p-3" style="background-color: var(--primary-color);">
+                    <a href="<?= base_url('login') ?>" class="btn btn-outline-light w-100 mb-2">
+                        Login
+                    </a>
+                </div>
+            <?php endif; ?>
         </div>
-    </footer>
-
+        
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <!-- Top Navigation -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-lg-none">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
+                        LMS
+                    </a>
+                    <button class="btn btn-link text-white" id="menu-toggle-mobile">
+                        ☰
+                    </button>
+                </div>
+            </nav>
+            
+            <!-- Main Content -->
+    <div class="container-fluid p-4">
+                <?= $this->renderSection('content') ?>
+    </div>
+    
     <!-- Bootstrap JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Custom JS -->
     <script>
-        // Enable tooltips
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl);
-        });
-        
-        // Auto-dismiss alerts after 5 seconds
+        // Toggle sidebar on mobile
         document.addEventListener('DOMContentLoaded', function() {
-            var alerts = document.querySelectorAll('.alert');
-            alerts.forEach(function(alert) {
-                setTimeout(function() {
-                    var bsAlert = new bootstrap.Alert(alert);
-                    bsAlert.close();
-                }, 5000);
+            const menuToggle = document.getElementById('menu-toggle');
+            const menuToggleMobile = document.getElementById('menu-toggle-mobile');
+            const wrapper = document.getElementById('wrapper');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    wrapper.classList.toggle('toggled');
+                });
+            }
+            
+            if (menuToggleMobile) {
+                menuToggleMobile.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    wrapper.classList.toggle('toggled');
+                });
+            }
+            
+            // Auto-close dropdowns when clicking outside
+            document.addEventListener('click', function(event) {
+                const dropdowns = document.querySelectorAll('.dropdown-menu.show');
+                dropdowns.forEach(function(dropdown) {
+                    if (!dropdown.parentElement.contains(event.target)) {
+                        const dropdownInstance = bootstrap.Dropdown.getInstance(dropdown.previousElementSibling);
+                        if (dropdownInstance) {
+                            dropdownInstance.hide();
+                        }
+                    }
+                });
             });
         });
     </script>
