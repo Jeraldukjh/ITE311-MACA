@@ -1,0 +1,172 @@
+DEBUG - 2025-10-10 01:05:38 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:05:38 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:05:48 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+ERROR - 2025-10-10 01:05:48 --> mysqli_sql_exception: Table 'lms_maca.login_attempts' doesn't exist in C:\xampp\htdocs\ITE311-MACA\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-MACA\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `lo...', 0)
+#1 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `lo...')
+#2 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `lo...')
+#3 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `lo...', Array, false)
+#4 C:\xampp\htdocs\ITE311-MACA\app\Controllers\Auth.php(258): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\ITE311-MACA\app\Controllers\Auth.php(231): App\Controllers\Auth->logLogin(NULL, false, 'Invalid email', 'CrisandyMirai@g...')
+#6 C:\xampp\htdocs\ITE311-MACA\app\Controllers\Auth.php(191): App\Controllers\Auth->handleFailedLogin(NULL, 'CrisandyMirai@g...')
+#7 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(933): App\Controllers\Auth->login()
+#8 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#9 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ITE311-MACA\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ITE311-MACA\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\ITE311-MACA\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-10-10 01:05:48 --> Failed to log login attempt: Table 'lms_maca.login_attempts' doesn't exist
+DEBUG - 2025-10-10 01:05:49 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:06:02 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:06:03 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:06:05 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:06:08 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:06:09 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:06:25 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:06:25 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:06:32 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:06:34 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:06:38 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:06:40 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:06:42 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:07:43 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:07:44 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:07:50 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+INFO - 2025-10-10 01:07:50 --> CSRF token verified.
+DEBUG - 2025-10-10 01:07:50 --> Form data: Array
+(
+    [title] => asdasda
+    [description] => qewq
+    [teacher_id] => 3
+)
+
+DEBUG - 2025-10-10 01:07:50 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:07:52 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:07:53 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:08:06 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:08:07 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:08:13 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:09:00 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:09:01 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+INFO - 2025-10-10 01:09:01 --> CSRF token verified.
+DEBUG - 2025-10-10 01:09:03 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:09:17 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:18:29 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:19:22 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+CRITICAL - 2025-10-10 01:19:22 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "auth/dashboard.php"
+[Method: GET, Route: dashboard]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('auth/dashboard.php')
+ 2 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('auth/dashboard', [], true)
+ 3 APPPATH\Controllers\BaseController.php(182): view('auth/dashboard', [...])
+ 4 APPPATH\Controllers\Auth.php(396): App\Controllers\BaseController->render('auth/dashboard', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-10-10 01:19:27 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+CRITICAL - 2025-10-10 01:19:27 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "auth/dashboard.php"
+[Method: GET, Route: dashboard]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('auth/dashboard.php')
+ 2 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('auth/dashboard', [], true)
+ 3 APPPATH\Controllers\BaseController.php(182): view('auth/dashboard', [...])
+ 4 APPPATH\Controllers\Auth.php(396): App\Controllers\BaseController->render('auth/dashboard', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-10-10 01:19:28 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+CRITICAL - 2025-10-10 01:19:28 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "auth/dashboard.php"
+[Method: GET, Route: dashboard]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('auth/dashboard.php')
+ 2 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('auth/dashboard', [], true)
+ 3 APPPATH\Controllers\BaseController.php(182): view('auth/dashboard', [...])
+ 4 APPPATH\Controllers\Auth.php(396): App\Controllers\BaseController->render('auth/dashboard', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-10-10 01:19:29 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+CRITICAL - 2025-10-10 01:19:29 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "auth/dashboard.php"
+[Method: GET, Route: dashboard]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('auth/dashboard.php')
+ 2 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('auth/dashboard', [], true)
+ 3 APPPATH\Controllers\BaseController.php(182): view('auth/dashboard', [...])
+ 4 APPPATH\Controllers\Auth.php(396): App\Controllers\BaseController->render('auth/dashboard', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-10-10 01:19:29 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+CRITICAL - 2025-10-10 01:19:29 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "auth/dashboard.php"
+[Method: GET, Route: dashboard]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('auth/dashboard.php')
+ 2 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('auth/dashboard', [], true)
+ 3 APPPATH\Controllers\BaseController.php(182): view('auth/dashboard', [...])
+ 4 APPPATH\Controllers\Auth.php(396): App\Controllers\BaseController->render('auth/dashboard', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-10-10 01:20:44 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:20:48 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:20:51 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:21:13 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:21:14 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:21:16 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+INFO - 2025-10-10 01:21:16 --> CSRF token verified.
+DEBUG - 2025-10-10 01:21:17 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:21:20 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:27:04 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:27:15 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:27:24 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+INFO - 2025-10-10 01:27:24 --> CSRF token verified.
+DEBUG - 2025-10-10 01:30:13 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:38:02 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:38:07 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:38:08 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:38:11 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:38:12 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:38:13 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:38:16 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:38:18 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:38:20 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:38:27 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:50:12 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:50:15 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 01:50:16 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 14:08:33 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 14:08:35 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 14:08:36 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 14:08:37 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 14:08:39 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 14:08:44 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 14:08:47 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 14:08:48 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 14:09:48 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 14:10:07 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+INFO - 2025-10-10 14:10:07 --> CSRF token verified.
+DEBUG - 2025-10-10 14:10:07 --> Form data: Array
+(
+    [title] => Networking 2
+    [description] => ITE311
+    [teacher_id] => 3
+)
+
+DEBUG - 2025-10-10 14:10:07 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.

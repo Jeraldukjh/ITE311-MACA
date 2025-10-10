@@ -181,4 +181,23 @@ abstract class BaseController extends Controller
         $data = array_merge($this->viewData, $data);
         return view($view, $data);
     }
+    
+    /**
+     * Get CSRF token data
+     * 
+     * @return array CSRF token name and hash
+     */
+    protected function getCsrfData()
+    {
+        $csrfToken = csrf_token();
+        $csrfHash = csrf_hash();
+        
+        // Also update the CSRF token in the session for the next request
+        session()->set('csrf_' . $csrfToken, $csrfHash);
+        
+        return [
+            'token' => $csrfToken,
+            'hash' => $csrfHash
+        ];
+    }
 }

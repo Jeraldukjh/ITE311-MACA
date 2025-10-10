@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
+use App\Models\EnrollmentModel;
 
 class Auth extends BaseController
 {
@@ -377,6 +378,18 @@ class Auth extends BaseController
                     ->limit(3)
                     ->get()
                     ->getResultArray();
+
+                // Detailed list of enrolled courses for display
+                $enrollmentModel = new EnrollmentModel();
+                $data['enrolled_courses_list'] = $enrollmentModel->getUserEnrollments($userId);
+
+                // Determine available courses the user is not yet enrolled in
+                $enrolledIds = $enrollmentModel->where('student_id', $userId)->findColumn('course_id') ?? [];
+                $builder = $db->table('courses')->select('id, title, description');
+                if (!empty($enrolledIds)) {
+                    $builder->whereNotIn('id', $enrolledIds);
+                }
+                $data['available_courses'] = $builder->orderBy('created_at', 'DESC')->limit(12)->get()->getResultArray();
                 break;
         }
         

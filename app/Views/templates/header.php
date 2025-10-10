@@ -12,6 +12,10 @@ $userRole = session()->get('role') ?? 'guest';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- CSRF Meta Tags for AJAX -->
+    <meta name="csrf-token-name" content="<?= csrf_token() ?>">
+    <meta name="csrf-token-value" content="<?= csrf_hash() ?>">
+    <meta name="csrf-header-name" content="<?= config('Security')->headerName ?>">
     <style>
         :root {
             --primary-color:rgb(45, 75, 93);  /* Red theme primary color */
@@ -39,21 +43,69 @@ $userRole = session()->get('role') ?? 'guest';
             min-height: 100vh;
             width: 250px;
             margin-left: -250px;
-            transition: margin 0.25s ease-out;
-            position: relative;
+            transition: all 0.3s ease;
+            position: fixed;
             z-index: 1000;
+            background: var(--primary-color);
             background-color: var(--primary-color) !important;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            box-shadow: 2px 0 15px rgba(0,0,0,0.1);
+        }
+        
+        #sidebar-wrapper,
+        #sidebar-wrapper .list-group-item,
+        #sidebar-wrapper .dropdown-menu {
+            background-color: var(--primary-color) !important;
+            color: white !important;
+        }
+        
+        #sidebar-wrapper .list-group-item {
+            border-left: none;
+            border-right: none;
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+        
+        #sidebar-wrapper .list-group-item:hover,
+        #sidebar-wrapper .list-group-item:focus {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+        }
+        
+        #sidebar-wrapper .dropdown-menu {
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         #page-content-wrapper {
             width: 100%;
             min-width: 0;
             flex: 1;
+            transition: all 0.3s ease;
+            transform-origin: top left;
+            margin-left: 0;
+            padding: 20px;
+        }
+        
+        #wrapper.toggled #page-content-wrapper {
+            transform: scale(0.95);
+            margin-left: 0;
+            padding: 20px;
+        }
+        
+        @media (min-width: 992px) {
+            #page-content-wrapper {
+                margin-left: 250px;
+                padding: 30px;
+            }
+            
+            #wrapper.toggled #page-content-wrapper {
+                margin-left: 0;
+                transform: scale(0.9) translateX(0);
+                padding: 30px;
+            }
         }
         
         #wrapper.toggled #sidebar-wrapper {
             margin-left: 0;
+            box-shadow: 2px 0 15px rgba(0,0,0,0.2);
+            background-color: var(--primary-color) !important;
         }
         
         .sidebar-heading {
@@ -64,6 +116,7 @@ $userRole = session()->get('role') ?? 'guest';
             border: none;
             border-radius: 0;
             padding: 0.75rem 1.5rem;
+            background-color: transparent;
         }
         
         .list-group-item:hover, .list-group-item:focus {
@@ -161,14 +214,17 @@ $userRole = session()->get('role') ?? 'guest';
 <body>
     <!-- Sidebar Navigation -->
     <div class="d-flex" id="wrapper">
+        <!-- Sidebar Toggle Button -->
+        <div class="position-fixed" style="z-index: 1100; margin: 10px;">
+            <button class="btn btn-primary" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
         <!-- Sidebar -->
         <div class="bg-danger text-white" id="sidebar-wrapper">
-            <div class="sidebar-heading p-3 d-flex justify-content-between align-items-center">
-                    <span class="fw-bold">LMS MACA</span>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <div class="sidebar-heading p-3">
+                <span class="fw-bold ms-5 ps-4">LMS MACA</span>
             </div>
             <div class="list-group list-group-flush">
                 <?php if ($isLoggedIn): ?>
@@ -271,8 +327,87 @@ $userRole = session()->get('role') ?? 'guest';
                 <?= $this->renderSection('content') ?>
     </div>
     
+    <!-- jQuery (for AJAX helpers) -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" crossorigin="anonymous"></script>
+    
+    <!-- Global CSRF setup for AJAX -->
+    <script>
+        window.CSRF = {
+            tokenName: document.querySelector('meta[name="csrf-token-name"]').getAttribute('content'),
+            hash: document.querySelector('meta[name="csrf-token-value"]').getAttribute('content'),
+            headerName: document.querySelector('meta[name="csrf-header-name"]').getAttribute('content') || 'X-CSRF-TOKEN'
+        };
+        if (window.jQuery) {
+            // Default header for CI4 CSRF
+            $.ajaxSetup({
+                headers: (function(){
+                    const h = {}; h[window.CSRF.headerName] = window.CSRF.hash; return h;
+                })()
+            });
+            // Refresh CSRF hash if server returns a new one in JSON under resp.csrf.hash
+            $(document).ajaxComplete(function(_evt, xhr){
+                try {
+                    const resp = xhr.responseJSON;
+                    if (resp && resp.csrf && resp.csrf.hash) {
+                        window.CSRF.hash = resp.csrf.hash;
+                        document.querySelector('meta[name="csrf-token-value"]').setAttribute('content', window.CSRF.hash);
+                    }
+                } catch (e) { /* ignore */ }
+            });
+        }
+    </script>
+    
     <!-- Bootstrap JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Sidebar Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const closeSidebar = document.getElementById('closeSidebar');
+            const wrapper = document.getElementById('wrapper');
+            const pageContent = document.getElementById('page-content-wrapper');
+            
+            // Initialize the page content position based on screen size
+            function updateContentPosition() {
+                if (window.innerWidth >= 992) {
+                    // Desktop view
+                    pageContent.style.marginLeft = wrapper.classList.contains('toggled') ? '0' : '250px';
+                } else {
+                    // Mobile view
+                    pageContent.style.marginLeft = '0';
+                }
+            }
+            
+            // Call on load
+            updateContentPosition();
+            
+            // Update on window resize
+            window.addEventListener('resize', updateContentPosition);
+            
+            // Toggle sidebar when clicking the hamburger menu
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    wrapper.classList.toggle('toggled');
+                    updateContentPosition();
+                });
+            }
+            
+            // Close button functionality removed as per request
+            
+            // Close sidebar when clicking outside on mobile
+            document.addEventListener('click', function(event) {
+                const isClickInside = document.getElementById('sidebar-wrapper').contains(event.target) || 
+                                    document.getElementById('sidebarToggle').contains(event.target);
+                
+                if (!isClickInside && window.innerWidth < 992) {
+                    wrapper.classList.add('toggled');
+                    updateContentPosition();
+                }
+            });
+        });
+    </script>
     <script>
         // Toggle sidebar on mobile
         document.addEventListener('DOMContentLoaded', function() {
