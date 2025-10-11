@@ -12,7 +12,7 @@ class CourseModel extends Model
 
     protected $allowedFields = [
         'teacher_id',
-        'title',
+        'course',
         'description',
         'created_at',
         'updated_at',

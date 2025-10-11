@@ -27,7 +27,7 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body">
-                            <h5 class="card-title fw-bold"><?= esc($course['title']) ?></h5>
+                            <h5 class="card-title fw-bold"><?= esc($course['course'] ?? $course['title'] ?? 'Untitled Course') ?></h5>
                             <h6 class="card-subtitle mb-2 text-muted">
                                 <i class="fas fa-chalkboard-teacher me-1"></i> 
                                 <?= esc($course['teacher_name'] ?? 'No Teacher Assigned') ?>

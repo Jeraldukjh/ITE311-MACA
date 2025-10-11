@@ -103,7 +103,7 @@ class Course extends BaseController
 
         // Verify course exists and is active
         $course = $db->table('courses')
-            ->select('id, title, description')
+            ->select('id, course, description')
             ->where('id', $courseId)
             ->get()
             ->getRowArray();
@@ -206,13 +206,12 @@ class Course extends BaseController
             'message' => 'Enrolled successfully.',
             'course'  => [
                 'id'          => $course['id'],
-                'title'       => $course['title'],
+                'course'      => $course['course'],
                 'description' => $course['description'],
                 'enrolled_at' => $enrolledAt,
             ],
             'debug' => [
                 'insert_id' => $insertId,
-                'timestamp' => $enrolledAt
             ],
             'csrf' => [
                 'token' => csrf_token(),

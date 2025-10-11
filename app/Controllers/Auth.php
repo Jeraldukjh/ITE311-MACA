@@ -385,7 +385,7 @@ class Auth extends BaseController
 
                 // Determine available courses the user is not yet enrolled in
                 $enrolledIds = $enrollmentModel->where('student_id', $userId)->findColumn('course_id') ?? [];
-                $builder = $db->table('courses')->select('id, title, description');
+                $builder = $db->table('courses')->select('id, course, description');
                 if (!empty($enrolledIds)) {
                     $builder->whereNotIn('id', $enrolledIds);
                 }

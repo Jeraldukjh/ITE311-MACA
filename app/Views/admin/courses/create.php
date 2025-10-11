@@ -36,8 +36,8 @@
                 <?= csrf_field() ?>
 
                 <div class="mb-3">
-                    <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="title" name="title" value="<?= esc(old('title')) ?>" required minlength="3" maxlength="100">
+                    <label for="course" class="form-label">Course</label>
+                    <input type="text" class="form-control" id="course" name="course" value="<?= esc(old('course', old('title'))) ?>" required minlength="3" maxlength="100">
                 </div>
 
                 <div class="mb-3">

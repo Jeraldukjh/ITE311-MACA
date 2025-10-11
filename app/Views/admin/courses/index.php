@@ -34,7 +34,7 @@
                     <thead class="table-light">
                         <tr>
                             <th style="width: 80px;">ID</th>
-                            <th>Title</th>
+                            <th>Course</th>
                             <th>Teacher</th>
                             <th style="width: 180px;">Created</th>
                         </tr>
@@ -45,7 +45,7 @@
                                 <tr>
                                     <td class="text-muted">#<?= esc($c['id']) ?></td>
                                     <td>
-                                        <div class="fw-semibold"><?= esc($c['title']) ?></div>
+                                        <div class="fw-semibold"><?= esc($c['course'] ?? $c['title'] ?? 'Untitled Course') ?></div>
                                         <div class="small text-muted"><?= esc($c['description'] ?? '') ?></div>
                                     </td>
                                     <td><?= esc($c['teacher_name'] ?? '—') ?></td>

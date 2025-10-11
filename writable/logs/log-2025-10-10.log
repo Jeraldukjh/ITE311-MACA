@@ -170,3 +170,10 @@ DEBUG - 2025-10-10 14:10:07 --> Form data: Array
 )
 
 DEBUG - 2025-10-10 14:10:07 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 14:19:46 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 14:19:46 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 14:19:57 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 14:19:57 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 14:20:02 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-10-10 14:20:44 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+INFO - 2025-10-10 14:20:44 --> CSRF token verified.

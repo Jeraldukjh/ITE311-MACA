@@ -14,7 +14,7 @@ class Courses extends BaseController
 
         $db = \Config\Database::connect();
         $courses = $db->table('courses c')
-            ->select('c.id, c.title, c.description, c.created_at, u.name as teacher_name, u.id as teacher_id')
+            ->select('c.id, c.course, c.description, c.created_at, u.name as teacher_name, u.id as teacher_id')
             ->join('users u', 'u.id = c.teacher_id', 'left')
             ->orderBy('c.created_at', 'DESC')
             ->get()
@@ -57,7 +57,7 @@ class Courses extends BaseController
 
         // Get form data
         $data = [
-            'title' => trim($this->request->getPost('title') ?? ''),
+            'course' => trim($this->request->getPost('course') ?? ''),
             'description' => trim($this->request->getPost('description') ?? ''),
             'teacher_id' => $this->request->getPost('teacher_id')
         ];
@@ -67,17 +67,17 @@ class Courses extends BaseController
 
         // Validation rules
         $rules = [
-            'title' => 'required|min_length[3]|max_length[100]|is_unique[courses.title]',
+            'course' => 'required|min_length[3]|max_length[100]|is_unique[courses.course]',
             'teacher_id' => 'required|integer|greater_than[0]',
             'description' => 'max_length[1000]'
         ];
 
         $messages = [
-            'title' => [
-                'required' => 'Course title is required',
-                'min_length' => 'Title must be at least 3 characters',
-                'max_length' => 'Title cannot exceed 100 characters',
-                'is_unique' => 'A course with this title already exists'
+            'course' => [
+                'required' => 'Course name is required',
+                'min_length' => 'Course name must be at least 3 characters',
+                'max_length' => 'Course name cannot exceed 100 characters',
+                'is_unique' => 'A course with this name already exists'
             ],
             'teacher_id' => [
                 'required' => 'Please select a teacher',
@@ -122,7 +122,7 @@ class Courses extends BaseController
         
         try {
             $courseModel->save([
-                'title' => $data['title'],
+                'course' => $data['course'],
                 'description' => !empty($data['description']) ? $data['description'] : null,
                 'teacher_id' => $data['teacher_id']
             ]);

@@ -53,7 +53,7 @@
                             <?php foreach ($enrolledCourses as $course): ?>
                                 <a href="<?= base_url('student/course/' . $course['id']) ?>" class="list-group-item list-group-item-action border-0 px-0">
                                     <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-1"><?= esc($course['title']) ?></h6>
+                                        <h6 class="mb-1"><?= esc($course['course'] ?? 'Untitled Course') ?></h6>
                                         <span class="badge bg-primary"><?= $course['progress'] ?? '0' ?>%</span>
                                     </div>
                                     <small class="text-muted">Last accessed: <?= $course['last_accessed'] ?? 'Never' ?></small>
@@ -120,7 +120,7 @@
                                         </div>
                                         <div class="flex-grow-1 ms-3">
                                             <div class="d-flex w-100 justify-content-between">
-                                                <h6 class="mb-1"><?= esc($activity['title']) ?></h6>
+                                                <h6 class="mb-1"><?= esc($activity['course'] ?? $activity['course'] ?? 'Activity') ?></h6>
                                                 <small class="text-muted"><?= timespan(strtotime($activity['created_at']), time(), 1) ?> ago</small>
                                             </div>
                                             <p class="mb-1 small"><?= esc($activity['description']) ?></p>
