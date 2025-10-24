@@ -37,6 +37,7 @@
                             <th>Course</th>
                             <th>Teacher</th>
                             <th style="width: 180px;">Created</th>
+                            <th style="width: 120px;">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,11 +51,20 @@
                                     </td>
                                     <td><?= esc($c['teacher_name'] ?? '—') ?></td>
                                     <td><?= !empty($c['created_at']) ? date('M j, Y g:i A', strtotime($c['created_at'])) : '—' ?></td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <a href="<?= base_url('admin/course/' . $c['id'] . '/upload') ?>"
+                                               class="btn btn-sm btn-outline-primary"
+                                               title="Upload Materials">
+                                                <i class="fas fa-upload"></i>
+                                            </a>
+                                        </div>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
-                                <td colspan="4" class="text-center text-muted py-4">No courses yet.</td>
+                                <td colspan="5" class="text-center text-muted py-4">No courses yet.</td>
                             </tr>
                         <?php endif; ?>
                     </tbody>

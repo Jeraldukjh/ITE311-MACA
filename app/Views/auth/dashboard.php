@@ -51,12 +51,21 @@
                     <?php if (!empty($enrolledCourses)): ?>
                         <div class="list-group list-group-flush">
                             <?php foreach ($enrolledCourses as $course): ?>
-                                <a href="<?= base_url('student/course/' . $course['id']) ?>" class="list-group-item list-group-item-action border-0 px-0">
+                                <a href="<?= base_url('student/course/' . $course['id'] . '/materials') ?>" class="list-group-item list-group-item-action border-0 px-0">
                                     <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-1"><?= esc($course['course'] ?? 'Untitled Course') ?></h6>
-                                        <span class="badge bg-primary"><?= $course['progress'] ?? '0' ?>%</span>
+                                        <h6 class="mb-1">
+                                            <i class="fas fa-book me-2"></i>
+                                            <?= esc($course['course'] ?? 'Untitled Course') ?>
+                                        </h6>
+                                        <span class="badge bg-primary">
+                                            <i class="fas fa-file-alt me-1"></i>
+                                            Materials
+                                        </span>
                                     </div>
-                                    <small class="text-muted">Last accessed: <?= $course['last_accessed'] ?? 'Never' ?></small>
+                                    <small class="text-muted">
+                                        <i class="fas fa-calendar me-1"></i>
+                                        Enrolled: <?= date('M j, Y', strtotime($course['enrolled_at'] ?? 'now')) ?>
+                                    </small>
                                 </a>
                             <?php endforeach; ?>
                         </div>

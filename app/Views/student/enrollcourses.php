@@ -44,11 +44,11 @@
                         </div>
                         <div class="card-footer bg-transparent">
                             <?php if (in_array($course['id'], $enrolledCourseIds ?? [])): ?>
-                                <button class="btn btn-success btn-sm w-100" disabled>
-                                    <i class="fas fa-check-circle me-1"></i> Enrolled
-                                </button>
+                                <a href="<?= base_url('student/course/' . $course['id'] . '/materials') ?>" class="btn btn-success btn-sm w-100">
+                                    <i class="fas fa-book-open me-1"></i> View Materials
+                                </a>
                             <?php else: ?>
-                                <button class="btn btn-primary btn-sm w-100 enroll-btn" 
+                                <button class="btn btn-primary btn-sm w-100 enroll-btn"
                                         data-course-id="<?= $course['id'] ?>">
                                     <i class="fas fa-plus-circle me-1"></i> Enroll Now
                                 </button>

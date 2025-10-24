@@ -30,13 +30,21 @@ $routes->group('', ['namespace' => 'App\Controllers'], function($routes) {
     $routes->group('', ['filter' => 'auth'], function($routes) {
         $routes->get('/logout', 'Auth::logout');
         $routes->get('/dashboard', 'Auth::dashboard', ['as' => 'dashboard']);
+
+        // Materials routes (accessible by authenticated users)
+        $routes->get('materials/download/(:num)', 'Materials::download/$1');
         
         // Admin routes
-        $routes->group('admin', ['filter' => 'role:admin'], function($routes) {
+        $routes->group('admin', ['filter' => 'role:admin,teacher'], function($routes) {
             // Courses management
             $routes->get('courses', 'Admin\Courses::index');
             $routes->get('courses/create', 'Admin\Courses::create');
             $routes->post('courses', 'Admin\Courses::store', ['filter' => 'csrf']);
+
+            // Materials management
+            $routes->get('course/(:num)/upload', 'Materials::upload/$1');
+            $routes->post('course/(:num)/upload', 'Materials::upload/$1');
+            $routes->get('materials/delete/(:num)', 'Materials::delete/$1');
         });
         
         // Student routes
@@ -46,6 +54,9 @@ $routes->group('', ['namespace' => 'App\Controllers'], function($routes) {
             
             // Enrollment route - using the Student\Enroll controller
             $routes->post('enroll', 'Student\Enroll::enroll', ['as' => 'student.enroll', 'filter' => 'csrf']);
+
+            // Student materials view
+            $routes->get('course/(:num)/materials', 'Materials::courseMaterials/$1');
         });
     });
 });
