@@ -316,11 +316,41 @@ $userRole = session()->get('role') ?? 'guest';
                     <a class="navbar-brand" href="#">
                         LMS
                     </a>
-                    <button class="btn btn-link text-white" id="menu-toggle-mobile">
-                        ☰
-                    </button>
+                    <div class="d-flex align-items-center gap-2">
+                        <?php if ($isLoggedIn): ?>
+                        <div class="dropdown me-2">
+                            <a href="#" class="text-white position-relative" id="notifDropdownMobile" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-regular fa-bell fa-lg"></i>
+                                <span id="notifBadgeMobile" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display:none;">0</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notifDropdownMobile" style="min-width: 300px;">
+                                <li class="dropdown-header">Notifications</li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li id="notifListMobile"><div class="px-3 py-2 text-muted">No notifications</div></li>
+                            </ul>
+                        </div>
+                        <?php endif; ?>
+                        <button class="btn btn-link text-white" id="menu-toggle-mobile">☰</button>
+                    </div>
                 </div>
             </nav>
+            <?php if ($isLoggedIn): ?>
+            <div class="d-none d-lg-block">
+                <div class="d-flex justify-content-end align-items-center py-2">
+                    <div class="dropdown me-3">
+                        <a href="#" class="text-dark position-relative" id="notifDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-regular fa-bell fa-lg"></i>
+                            <span id="notifBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display:none;">0</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notifDropdown" style="min-width: 320px;">
+                            <li class="dropdown-header">Notifications</li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li id="notifList"><div class="px-3 py-2 text-muted">No notifications</div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <?php endif; ?>
             
             <!-- Main Content -->
     <div class="container-fluid p-4">
@@ -356,6 +386,61 @@ $userRole = session()->get('role') ?? 'guest';
             });
         }
     </script>
+    <?php if ($isLoggedIn): ?>
+    <script>
+        function renderNotifications(targetListId, items) {
+            const list = document.getElementById(targetListId);
+            if (!list) return;
+            if (!items || items.length === 0) {
+                list.innerHTML = '<div class="px-3 py-2 text-muted">No notifications</div>';
+                return;
+            }
+            list.innerHTML = items.map(function(n){
+                const id = n.id;
+                const msg = n.message ? n.message : 'Notification';
+                return `
+                <div class="px-3 py-2">
+                    <div class="alert alert-info d-flex justify-content-between align-items-center mb-2">
+                        <div class="me-2">${msg}</div>
+                        <button class="btn btn-sm btn-outline-secondary" data-notif-id="${id}" onclick="markNotifRead(${id})">Mark as Read</button>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function updateBadges(count) {
+            const show = count > 0;
+            const els = [document.getElementById('notifBadge'), document.getElementById('notifBadgeMobile')];
+            els.forEach(function(el){
+                if (!el) return;
+                el.textContent = count;
+                el.style.display = show ? 'inline-block' : 'none';
+            });
+        }
+
+        function fetchNotifications() {
+            $.get('<?= base_url('/notifications') ?>')
+                .done(function(resp){
+                    if (!resp || !resp.success) return;
+                    updateBadges(resp.count || 0);
+                    renderNotifications('notifList', resp.notifications || []);
+                    renderNotifications('notifListMobile', resp.notifications || []);
+                });
+        }
+
+        function markNotifRead(id) {
+            $.post('<?= base_url('/notifications/mark_read') ?>/' + id, {})
+                .done(function(resp){
+                    fetchNotifications();
+                });
+        }
+
+        $(document).ready(function(){
+            fetchNotifications();
+            setInterval(fetchNotifications, 60000);
+        });
+    </script>
+    <?php endif; ?>
     
     <!-- Bootstrap JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

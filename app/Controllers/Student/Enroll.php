@@ -5,17 +5,20 @@ namespace App\Controllers\Student;
 use App\Controllers\BaseController;
 use App\Models\CourseModel;
 use App\Models\EnrollmentModel;
+use App\Models\NotificationModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class Enroll extends BaseController
 {
     protected $courseModel;
     protected $enrollmentModel;
+    protected $notificationModel;
 
     public function __construct()
     {
         $this->courseModel = new CourseModel();
         $this->enrollmentModel = new EnrollmentModel();
+        $this->notificationModel = new NotificationModel();
     }
 
     /**
@@ -145,6 +148,19 @@ class Enroll extends BaseController
             // Insert the enrollment
             $this->enrollmentModel->insert($enrollmentData);
             $enrollmentId = $this->enrollmentModel->getInsertID();
+            
+            // Create a notification for the student
+            try {
+                $message = 'You have been enrolled in ' . ($course['course'] ?? 'a course');
+                $this->notificationModel->insert([
+                    'user_id'    => $userId,
+                    'message'    => $message,
+                    'is_read'    => 0,
+                    'created_at' => date('Y-m-d H:i:s'),
+                ]);
+            } catch (\Throwable $t) {
+                log_message('warning', 'Failed to create notification: ' . $t->getMessage());
+            }
             
             return $this->response->setJSON([
                 'success' => true,
