@@ -31,6 +31,10 @@ $routes->group('', ['namespace' => 'App\Controllers'], function($routes) {
         $routes->get('/logout', 'Auth::logout');
         $routes->get('/dashboard', 'Auth::dashboard', ['as' => 'dashboard']);
 
+        // Courses search (available to authenticated users)
+        $routes->get('/courses/search', 'Course::search');
+        $routes->post('/courses/search', 'Course::search');
+
         // Notifications API
         $routes->get('/notifications', 'Notifications::get');
         $routes->post('/notifications/mark_read/(:num)', 'Notifications::mark_as_read/$1');

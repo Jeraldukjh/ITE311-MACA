@@ -4,10 +4,44 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\EnrollmentModel;
+use App\Models\CourseModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class Course extends BaseController
 {
+    /**
+     * Search courses by keyword (AJAX + regular request)
+     */
+    public function search()
+    {
+        $searchTerm = $this->request->getGet('search_term');
+
+        if ($searchTerm === null) {
+            $searchTerm = $this->request->getPost('search_term');
+        }
+
+        $courseModel = new CourseModel();
+
+        if (!empty($searchTerm)) {
+            $courseModel
+                ->like('course', $searchTerm)
+                ->orLike('description', $searchTerm);
+        }
+
+        $courses = $courseModel->findAll();
+
+        if ($this->request->isAJAX()) {
+            return $this->response->setJSON($courses);
+        }
+
+        return $this->render('student/enrollcourses', [
+            'title' => 'Available Courses',
+            'courses' => $courses,
+            // In this search context we do not track enrollment state
+            'enrolledCourseIds' => [],
+        ]);
+    }
+
     /**
      * Handle AJAX enrollment requests
      */

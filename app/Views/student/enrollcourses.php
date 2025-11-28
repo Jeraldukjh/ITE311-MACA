@@ -7,6 +7,19 @@
         <h3 class="mb-0">Available Courses</h3>
     </div>
 
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <form id="searchForm" class="d-flex">
+                <div class="input-group">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search courses..." name="search_term">
+                    <button class="btn btn-outline-primary" type="submit">
+                        <i class="bi bi-search"></i> Search
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <?php if (session()->getFlashdata('success')): ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <?= session()->getFlashdata('success') ?>
@@ -21,11 +34,11 @@
         </div>
     <?php endif; ?>
 
-    <div class="row g-4">
+    <div id="coursesContainer" class="row g-4">
         <?php if (!empty($courses)): ?>
             <?php foreach ($courses as $course): ?>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm">
+                    <div class="card h-100 shadow-sm course-card">
                         <div class="card-body">
                             <h5 class="card-title fw-bold"><?= esc($course['course'] ?? $course['title'] ?? 'Untitled Course') ?></h5>
                             <h6 class="card-subtitle mb-2 text-muted">
@@ -117,8 +130,46 @@ function updateCsrfToken() {
     return csrf;
 }
 
-// Handle enrollment when the document is ready
+// Handle enrollment and course search when the document is ready
 $(document).ready(function() {
+    // Client-side filtering
+    $('#searchInput').on('keyup', function() {
+        var value = $(this).val().toLowerCase();
+        $('.course-card').filter(function() {
+            var text = $(this).text().toLowerCase();
+            $(this).toggle(text.indexOf(value) > -1);
+        });
+    });
+
+    // Server-side search with AJAX
+    $('#searchForm').on('submit', function(e) {
+        e.preventDefault();
+
+        var searchTerm = $('#searchInput').val();
+        var $coursesContainer = $('#coursesContainer');
+
+        $.get('<?= site_url('/courses/search') ?>', { search_term: searchTerm }, function(data) {
+            $coursesContainer.empty();
+
+            if (data && data.length > 0) {
+                $.each(data, function(index, course) {
+                    var courseHtml = `
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card h-100 shadow-sm course-card">
+                                <div class="card-body">
+                                    <h5 class="card-title fw-bold">${course.course}</h5>
+                                    <p class="card-text text-muted">${course.description ?? ''}</p>
+                                </div>
+                            </div>
+                        </div>`;
+                    $coursesContainer.append(courseHtml);
+                });
+            } else {
+                $coursesContainer.html('<div class="col-12"><div class="alert alert-info">No courses found matching your search.</div></div>');
+            }
+        }, 'json');
+    });
+
     // Handle enroll button click
     $(document).on('click', '.enroll-btn', function(e) {
         e.preventDefault();
