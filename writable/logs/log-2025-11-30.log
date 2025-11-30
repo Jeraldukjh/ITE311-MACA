@@ -1,0 +1,162 @@
+DEBUG - 2025-11-30 10:58:43 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 10:58:45 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 10:58:55 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+ERROR - 2025-11-30 10:58:56 --> mysqli_sql_exception: Table 'lms_maca.login_attempts' doesn't exist in C:\xampp\htdocs\ITE311-MACA\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-MACA\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `lo...', 0)
+#1 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `lo...')
+#2 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `lo...')
+#3 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `lo...', Array, false)
+#4 C:\xampp\htdocs\ITE311-MACA\app\Controllers\Auth.php(258): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\ITE311-MACA\app\Controllers\Auth.php(228): App\Controllers\Auth->logLogin('3', false, 'Invalid passwor...')
+#6 C:\xampp\htdocs\ITE311-MACA\app\Controllers\Auth.php(191): App\Controllers\Auth->handleFailedLogin('3', 'Krish@gmail.com')
+#7 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(933): App\Controllers\Auth->login()
+#8 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#9 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ITE311-MACA\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ITE311-MACA\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\ITE311-MACA\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-11-30 10:58:56 --> Failed to log login attempt: Table 'lms_maca.login_attempts' doesn't exist
+DEBUG - 2025-11-30 10:58:56 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 10:59:05 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+ERROR - 2025-11-30 10:59:06 --> mysqli_sql_exception: Table 'lms_maca.login_attempts' doesn't exist in C:\xampp\htdocs\ITE311-MACA\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-MACA\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `lo...', 0)
+#1 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `lo...')
+#2 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `lo...')
+#3 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `lo...', Array, false)
+#4 C:\xampp\htdocs\ITE311-MACA\app\Controllers\Auth.php(258): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\ITE311-MACA\app\Controllers\Auth.php(228): App\Controllers\Auth->logLogin('3', false, 'Invalid passwor...')
+#6 C:\xampp\htdocs\ITE311-MACA\app\Controllers\Auth.php(191): App\Controllers\Auth->handleFailedLogin('3', 'Krish@gmail.com')
+#7 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(933): App\Controllers\Auth->login()
+#8 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#9 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ITE311-MACA\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ITE311-MACA\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\ITE311-MACA\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-11-30 10:59:06 --> Failed to log login attempt: Table 'lms_maca.login_attempts' doesn't exist
+DEBUG - 2025-11-30 10:59:06 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 10:59:33 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 10:59:33 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 10:59:35 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 10:59:40 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 10:59:40 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 10:59:42 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 10:59:42 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 10:59:44 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 10:59:44 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:00:45 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:01:45 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:02:39 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:02:40 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:02:42 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:02:42 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:02:43 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:02:46 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:02:46 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:02:47 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:02:48 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:02:49 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:02:49 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:03:50 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:04:50 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:05:50 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:06:50 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:07:50 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:08:50 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:09:51 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:10:52 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:11:53 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:12:54 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:13:55 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:14:24 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:14:25 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:15:15 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:15:15 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:15:16 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:15:17 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:15:17 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:15:19 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:15:19 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:15:21 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:15:23 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:15:23 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:15:30 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:15:31 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:15:31 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:16:32 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:17:32 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:18:32 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:19:32 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:20:32 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:21:31 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:21:34 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:21:37 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:21:37 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:21:44 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:21:56 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:21:57 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:21:58 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:23:06 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:23:07 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:24:02 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:24:03 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:24:03 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:24:04 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:24:09 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:24:09 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:24:10 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+CRITICAL - 2025-11-30 11:24:10 --> Error: Cannot access protected property CodeIgniter\HTTP\IncomingRequest::$uri
+[Method: GET, Route: student/course/1/materials]
+in APPPATH\Filters\RoleFilter.php on line 30.
+ 1 SYSTEMPATH\Filters\Filters.php(241): App\Filters\RoleFilter->before(Object(CodeIgniter\HTTP\IncomingRequest), [...])
+ 2 SYSTEMPATH\Filters\Filters.php(221): CodeIgniter\Filters\Filters->runBefore([...])
+ 3 SYSTEMPATH\CodeIgniter.php(479): CodeIgniter\Filters\Filters->run('student/course/1/materials', 'before')
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-30 11:24:12 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:24:12 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:25:18 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:25:28 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+CRITICAL - 2025-11-30 11:25:28 --> Error: Cannot access protected property CodeIgniter\HTTP\IncomingRequest::$uri
+[Method: GET, Route: student/course/2/materials]
+in APPPATH\Filters\RoleFilter.php on line 30.
+ 1 SYSTEMPATH\Filters\Filters.php(241): App\Filters\RoleFilter->before(Object(CodeIgniter\HTTP\IncomingRequest), [...])
+ 2 SYSTEMPATH\Filters\Filters.php(221): CodeIgniter\Filters\Filters->runBefore([...])
+ 3 SYSTEMPATH\CodeIgniter.php(479): CodeIgniter\Filters\Filters->run('student/course/2/materials', 'before')
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-30 11:25:29 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:25:31 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:26:13 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:26:14 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:26:14 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:26:15 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:26:19 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:26:19 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:26:21 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:26:22 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:26:24 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:26:25 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:26:25 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:26:26 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:26:27 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:26:28 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:26:31 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:26:31 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:26:36 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:26:37 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:29:21 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:29:22 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:29:35 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:29:36 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:29:38 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:29:39 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:29:41 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-11-30 11:29:41 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.

@@ -66,6 +66,12 @@ $routes->group('', ['namespace' => 'App\Controllers'], function($routes) {
             // Student materials view
             $routes->get('course/(:num)/materials', 'Materials::courseMaterials/$1');
         });
+
+        // Teacher routes
+        $routes->group('teacher', ['filter' => 'role:teacher'], function($routes) {
+            $routes->get('courses', 'Teacher\\Courses::index', ['as' => 'teacher.courses']);
+            $routes->get('course/(:num)/students', 'Teacher\\Courses::students/$1', ['as' => 'teacher.course.students']);
+        });
     });
 });
 

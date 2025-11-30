@@ -115,4 +115,21 @@ class EnrollmentModel extends Model
             'course_id'  => $courseId,
         ])->countAllResults();
     }
+
+    /**
+     * Get all students enrolled in a specific course
+     *
+     * @param int $courseId
+     * @return array<int,array<string,mixed>>
+     */
+    public function getStudentsByCourse(int $courseId): array
+    {
+        return $this->db->table($this->table . ' e')
+            ->select('u.id, u.name, u.email, e.enrolled_at')
+            ->join('users u', 'u.id = e.student_id')
+            ->where('e.course_id', $courseId)
+            ->orderBy('e.enrolled_at', 'DESC')
+            ->get()
+            ->getResultArray();
+    }
 }

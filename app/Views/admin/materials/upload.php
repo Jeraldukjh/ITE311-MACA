@@ -57,7 +57,9 @@
 
                         <div class="row">
                             <div class="col-md-6">
-                                <a href="<?= base_url('admin/courses') ?>" class="btn btn-secondary w-100">
+                                <?php $role = session()->get('role'); ?>
+                                <?php $backUrl = ($role === 'teacher') ? base_url('teacher/courses') : base_url('admin/courses'); ?>
+                                <a href="<?= $backUrl ?>" class="btn btn-secondary w-100">
                                     <i class="fas fa-arrow-left me-2"></i>Back to Courses
                                 </a>
                             </div>
