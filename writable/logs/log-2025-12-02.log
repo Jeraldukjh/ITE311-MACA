@@ -1013,3 +1013,221 @@ AND `is_read` = :is_read:', [...], false)
 13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
 14 SYSTEMPATH\rewrite.php(64): require('C:\\xampp\\htdocs\\ITE311-MACA\\public\\index.php')
 DEBUG - 2025-12-02 07:39:53 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 12:59:03 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 12:59:09 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 12:59:13 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 12:59:14 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 12:59:15 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 12:59:17 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:02:25 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+ERROR - 2025-12-02 13:02:29 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\ITE311-MACA\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-MACA\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'lms_maca', 3306, '', 0)
+#1 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ITE311-MACA\app\Controllers\Auth.php(161): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(933): App\Controllers\Auth->login()
+#6 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-MACA\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-MACA\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-MACA\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\xampp\htdocs\ITE311-MACA\system\rewrite.php(64): require('C:\\xampp\\htdocs...')
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\ITE311-MACA\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\ITE311-MACA\app\Controllers\Auth.php(161): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(933): App\Controllers\Auth->login()
+#5 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#6 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\ITE311-MACA\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\ITE311-MACA\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\ITE311-MACA\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\xampp\htdocs\ITE311-MACA\system\rewrite.php(64): require('C:\\xampp\\htdocs...')
+#11 {main}
+CRITICAL - 2025-12-02 13:02:29 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: POST, Route: login]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `email` = :email:
+AND `is_active` = :is_active:', [...], false)
+ 3 APPPATH\Controllers\Auth.php(161): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->login()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(64): require('C:\\xampp\\htdocs\\ITE311-MACA\\public\\index.php')
+DEBUG - 2025-12-02 13:02:43 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+ERROR - 2025-12-02 13:02:47 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\ITE311-MACA\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-MACA\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'lms_maca', 3306, '', 0)
+#1 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ITE311-MACA\app\Controllers\Auth.php(161): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(933): App\Controllers\Auth->login()
+#6 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-MACA\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-MACA\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-MACA\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\xampp\htdocs\ITE311-MACA\system\rewrite.php(64): require('C:\\xampp\\htdocs...')
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\ITE311-MACA\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\ITE311-MACA\app\Controllers\Auth.php(161): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(933): App\Controllers\Auth->login()
+#5 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#6 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\ITE311-MACA\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\ITE311-MACA\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\ITE311-MACA\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\xampp\htdocs\ITE311-MACA\system\rewrite.php(64): require('C:\\xampp\\htdocs...')
+#11 {main}
+CRITICAL - 2025-12-02 13:02:47 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: POST, Route: login]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `email` = :email:
+AND `is_active` = :is_active:', [...], false)
+ 3 APPPATH\Controllers\Auth.php(161): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->login()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(64): require('C:\\xampp\\htdocs\\ITE311-MACA\\public\\index.php')
+DEBUG - 2025-12-02 13:02:50 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:02:52 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:03:08 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+ERROR - 2025-12-02 13:03:12 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\ITE311-MACA\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-MACA\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'lms_maca', 3306, '', 0)
+#1 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ITE311-MACA\app\Controllers\Auth.php(161): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(933): App\Controllers\Auth->login()
+#6 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-MACA\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-MACA\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-MACA\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\xampp\htdocs\ITE311-MACA\system\rewrite.php(64): require('C:\\xampp\\htdocs...')
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\ITE311-MACA\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\ITE311-MACA\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\ITE311-MACA\app\Controllers\Auth.php(161): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(933): App\Controllers\Auth->login()
+#5 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#6 C:\xampp\htdocs\ITE311-MACA\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\ITE311-MACA\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\ITE311-MACA\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\ITE311-MACA\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\xampp\htdocs\ITE311-MACA\system\rewrite.php(64): require('C:\\xampp\\htdocs...')
+#11 {main}
+CRITICAL - 2025-12-02 13:03:12 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: POST, Route: login]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `email` = :email:
+AND `is_active` = :is_active:', [...], false)
+ 3 APPPATH\Controllers\Auth.php(161): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->login()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(64): require('C:\\xampp\\htdocs\\ITE311-MACA\\public\\index.php')
+DEBUG - 2025-12-02 13:04:19 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:04:20 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:04:21 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:04:24 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:04:25 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:04:26 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:04:27 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:04:28 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:04:29 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:04:36 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:04:36 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:04:55 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:04:57 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:04:57 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:04:58 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:04:58 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:04:59 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:05:01 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:05:02 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:05:37 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:05:38 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:05:38 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:05:40 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:05:40 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:05:41 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:05:46 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:05:47 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:06:47 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:07:47 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:08:06 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:08:07 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:08:08 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:08:09 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:08:12 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:08:13 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:08:13 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:08:14 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:08:15 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:08:16 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:08:16 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:08:18 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:08:58 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+INFO - 2025-12-02 13:08:58 --> CSRF token verified.
+DEBUG - 2025-12-02 13:08:59 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:09:00 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:09:51 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:09:51 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:09:52 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:09:53 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:09:54 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:09:54 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:10:55 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:11:55 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:12:55 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:13:55 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:14:55 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:15:55 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:16:21 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:16:21 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:16:22 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:16:23 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:16:27 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:16:28 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:17:28 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:18:28 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.
+DEBUG - 2025-12-02 13:19:28 --> Session: Class initialized using 'App\Libraries\CustomSessionHandler' driver.

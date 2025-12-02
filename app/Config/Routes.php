@@ -44,6 +44,14 @@ $routes->group('', ['namespace' => 'App\Controllers'], function($routes) {
         
         // Admin routes
         $routes->group('admin', ['filter' => 'role:admin,teacher'], function($routes) {
+            // Users management (admin only will be enforced in controller)
+            $routes->get('users', 'Admin\Users::index');
+            $routes->get('users/create', 'Admin\Users::create');
+            $routes->post('users', 'Admin\Users::store', ['filter' => 'csrf']);
+            $routes->get('users/(:num)/edit', 'Admin\Users::edit/$1');
+            $routes->post('users/(:num)', 'Admin\Users::update/$1', ['filter' => 'csrf']);
+            $routes->post('users/(:num)/delete', 'Admin\Users::delete/$1', ['filter' => 'csrf']);
+
             // Courses management
             $routes->get('courses', 'Admin\Courses::index');
             $routes->get('courses/create', 'Admin\Courses::create');
