@@ -78,6 +78,7 @@ class Auth extends BaseController
                     'email' => filter_var($input['email'], FILTER_SANITIZE_EMAIL),
                     'password' => $hashedPassword,
                     'role' => 'student',
+                    'is_active' => 1,
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s')
                 ];
